@@ -26,23 +26,6 @@ def get_neighbors(state):
             neighbors.append(new_state)
     return neighbors
 
-def dfs(state, visited=None):
-    if visited is None:
-        visited = set()
-
-    if is_goal(state):
-        return [state]
-
-    visited.add(tuple(map(tuple, state)))
-
-    for neighbor in get_neighbors(state):
-        neighbor_key = tuple(map(tuple, neighbor))
-        if neighbor_key not in visited:
-            path = dfs(neighbor, visited)
-            if path:
-                return [state] + path
-    return None
-
 def dls(state, depth, visited):
     if is_goal(state):
         return [state]
